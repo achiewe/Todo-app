@@ -14,6 +14,7 @@ const HeaderMain = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 48px;
 `;
 
 export default Header;
