@@ -15,8 +15,8 @@ const MainContainer = styled.div`
   width: 100%;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
   background-image: url(${BgMobileLight});
   padding: 0 24px;
   background-repeat: no-repeat;
