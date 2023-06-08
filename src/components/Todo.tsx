@@ -47,6 +47,11 @@ const TodoMain = styled.div`
       line-height: 12px;
       letter-spacing: -0.1666666716337204px;
       text-align: left;
+      color: black;
+      outline: none;
+    }
+
+    input::placeholder {
       color: #9495a5;
     }
   }

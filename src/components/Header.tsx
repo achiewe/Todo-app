@@ -15,6 +15,7 @@ const HeaderMain = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 48px;
+  margin-bottom: 40px;
 `;
 
 export default Header;
