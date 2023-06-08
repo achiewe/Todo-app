@@ -7,7 +7,7 @@ export interface TodoProps {
 }
 
 const initialState: TodoProps = {
-  wording: "",
+  wording: "heavy",
   id: 5,
   recieve: false,
 };

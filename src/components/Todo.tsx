@@ -1,11 +1,32 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { TodoRoot } from "../store/redux";
+import { makeTodo } from "../store/TodoSlice";
 
 const Todo = (): JSX.Element => {
+  const tasks = useSelector((redux: TodoRoot) => redux.createTodo);
+  console.log(tasks);
+  const [takeText, setTakeText] = useState<string>("");
+  const dispatch = useDispatch();
+  const ClickOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (takeText.trim() !== "") {
+      dispatch(makeTodo(takeText));
+    }
+  };
+
+  console.log(takeText);
   return (
     <TodoMain>
-      <form>
-        <button type="submit"> </button>
-        <input placeholder="Create a new todo…" />
+      <form onSubmit={ClickOnSubmit}>
+        <button type="submit"></button>
+        <input
+          //   onChange={(e) => {
+          //     setTakeText(e.target.value);
+          //   }}
+          placeholder="Create a new todo…"
+        />
       </form>
     </TodoMain>
   );

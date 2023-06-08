@@ -1,9 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "./TodoSlice";
+import TodoSlice from "./TodoSlice";
+import { TodoProps } from "./TodoSlice";
 const store = configureStore({
   reducer: {
-    name: todoReducer,
+    createTodo: TodoSlice,
   },
 });
+
+export type TodoRoot = {
+  createTodo: TodoProps;
+};
 
 export default store;
