@@ -3,7 +3,11 @@ import GlobalStyles from "./GlobalStyles";
 import BgMobileLight from "../src/assets/bg-mobile-light.jpg";
 import Header from "./components/Header";
 import Todo from "./components/Todo";
+import { useSelector } from "react-redux";
+import { Mode } from "./store/redux";
 function App() {
+  const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
+
   return (
     <MainContainer>
       <GlobalStyles />

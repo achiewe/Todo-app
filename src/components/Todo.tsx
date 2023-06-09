@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { TodoRoot } from "../store/redux";
+import { TodoRoot, Mode } from "../store/redux";
 import { makeTodo, toggleReceive } from "../store/TodoSlice";
 import crossSvg from "../assets/icon-cross.svg";
 import React from "react";
@@ -19,7 +19,7 @@ const Todo = (): JSX.Element => {
     }
   };
 
-  console.log(todoItems);
+  const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
 
   return (
     <TodoMain>
