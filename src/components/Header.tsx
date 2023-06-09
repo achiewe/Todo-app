@@ -14,8 +14,12 @@ const Header = (): JSX.Element => {
   };
   return (
     <HeaderMain>
-      <img src={TodoSvg} alt="todo svg" />
-      <img onClick={clickOnMode} src={darkMode ? iconSun : iconMoon} />
+      <img className="TodoSvg" src={TodoSvg} alt="todo svg" />
+      <img
+        className="IconSunMon"
+        onClick={clickOnMode}
+        src={darkMode ? iconSun : iconMoon}
+      />
     </HeaderMain>
   );
 };
@@ -27,6 +31,11 @@ const HeaderMain = styled.div`
   align-items: center;
   margin-top: 48px;
   margin-bottom: 40px;
+
+  .IconSunMon {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export default Header;

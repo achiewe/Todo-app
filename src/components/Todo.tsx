@@ -22,7 +22,7 @@ const Todo = (): JSX.Element => {
   const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
 
   return (
-    <TodoMain>
+    <TodoMain darkMode={darkMode}>
       <form onSubmit={ClickOnSubmit}>
         <button type="submit"></button>
         <input
@@ -55,7 +55,7 @@ const Todo = (): JSX.Element => {
   );
 };
 
-const TodoMain = styled.div`
+const TodoMain = styled.div<{ darkMode: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -72,15 +72,19 @@ const TodoMain = styled.div`
     align-items: center;
     padding: 14px 0 14px 20px;
     border-radius: 5px;
-    background-color: #ffffff;
-    box-shadow: 0px 35px 50px -15px #c2c3d680;
+    background-color: ${(props) => (props.darkMode ? "#25273D" : "#FFFFFF")};
+    box-shadow: ${(props) =>
+      props.darkMode
+        ? "0px 35px 50px -15px rgba(0, 0, 0, 0.5)"
+        : "0px 35px 50px -15px #c2c3d680"};
 
     button {
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      border: 1px solid #e3e4f1;
-      background: #ffffff;
+      border: ${(props) =>
+        props.darkMode ? "1px solid #393A4B " : "1px solid #e3e4f1"};
+      background: ${(props) => (props.darkMode ? "#25273D" : "#FFFFFF")};
     }
 
     input {
@@ -91,7 +95,8 @@ const TodoMain = styled.div`
       line-height: 12px;
       letter-spacing: -0.1666666716337204px;
       text-align: left;
-      color: black;
+      color: ${(props) => (props.darkMode ? "#FFFFFF" : "black")};
+      background-color: ${(props) => (props.darkMode ? "#25273D" : "#FFFFFF")};
       outline: none;
     }
 
@@ -104,7 +109,7 @@ const TodoMain = styled.div`
     width: 327px;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: ${(props) => (props.darkMode ? "#25273D" : "#FFFFFF")};
     box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
     border-radius: 5px;
     padding: 16px 0 22px 0;
@@ -129,8 +134,9 @@ const TodoMain = styled.div`
           height: 20px;
           border-radius: 50%;
           border: none;
-          border: 1px solid #e3e4f1;
-          background: #ffffff;
+          border: ${(props) =>
+            props.darkMode ? "1px solid #393A4B" : "1px solid #e3e4f1"};
+          background: ${(props) => (props.darkMode ? "#25273D" : "#ffffff")};
         }
 
         h3 {
@@ -139,7 +145,7 @@ const TodoMain = styled.div`
           line-height: 12px;
           letter-spacing: -0.1666666716337204px;
           text-align: left;
-          color: #494c6b;
+          color: ${(props) => (props.darkMode ? "#C8CBE7" : "#494c6b")};
         }
       }
 
@@ -151,7 +157,7 @@ const TodoMain = styled.div`
 
     hr {
       width: 100%;
-      background-color: #e3e4f1;
+      background-color: ${(props) => (props.darkMode ? "#393A4B" : "#e3e4f1")};
       border: none;
       height: 1px;
     }
