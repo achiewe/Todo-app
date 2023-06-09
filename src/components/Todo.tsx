@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { TodoRoot } from "../store/redux";
 import { makeTodo, toggleReceive } from "../store/TodoSlice";
 import crossSvg from "../assets/icon-cross.svg";
+import React from "react";
 
 const Todo = (): JSX.Element => {
   const todoItems = useSelector(
@@ -33,21 +34,23 @@ const Todo = (): JSX.Element => {
       </form>
       <ul className="itemsUl">
         {todoItems.map((todo, index) => (
-          <li className="textLi" key={index}>
-            <div className="circleText">
-              <button
-                onClick={() => {
-                  dispatch(toggleReceive(todo.id));
-                }}
-                className="circle"
-              ></button>
-              <h3>{todo.wording}</h3>
-            </div>
-            <img className="cross-svg" src={crossSvg} alt="cross svg" />
-          </li>
+          <React.Fragment key={index}>
+            <li className="textLi">
+              <div className="circleText">
+                <button
+                  onClick={() => {
+                    dispatch(toggleReceive(todo.id));
+                  }}
+                  className="circle"
+                ></button>
+                <h3>{todo.wording}</h3>
+              </div>
+              <img className="cross-svg" src={crossSvg} alt="cross svg" />
+            </li>
+            <hr />
+          </React.Fragment>
         ))}
       </ul>
-      <hr />
     </TodoMain>
   );
 };
