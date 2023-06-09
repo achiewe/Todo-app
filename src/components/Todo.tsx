@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { TodoRoot } from "../store/redux";
-import { makeTodo } from "../store/TodoSlice";
+import { makeTodo, toggleReceive } from "../store/TodoSlice";
 import crossSvg from "../assets/icon-cross.svg";
 
 const Todo = (): JSX.Element => {
-  const tasks = useSelector((redux: TodoRoot) => redux.createTodo);
-  console.log(tasks);
+  const todoItems = useSelector(
+    (redux: TodoRoot) => redux.createTodo.myTodoArray
+  );
   const [takeText, setTakeText] = useState<string>("");
   const dispatch = useDispatch();
   const ClickOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,6 +17,8 @@ const Todo = (): JSX.Element => {
       dispatch(makeTodo(takeText));
     }
   };
+
+  console.log(todoItems);
 
   return (
     <TodoMain>
@@ -29,15 +32,22 @@ const Todo = (): JSX.Element => {
         />
       </form>
       <ul className="itemsUl">
-        <li className="textLi">
-          <div className="circleText">
-            <button className="circle"></button>
-            <h3> Jog around the park 3x</h3>
-          </div>
-          <img className="cross-svg" src={crossSvg} alt="cross svg" />
-        </li>
-        <hr />
+        {todoItems.map((todo, index) => (
+          <li className="textLi" key={index}>
+            <div className="circleText">
+              <button
+                onClick={() => {
+                  dispatch(toggleReceive(todo.id));
+                }}
+                className="circle"
+              ></button>
+              <h3>{todo.wording}</h3>
+            </div>
+            <img className="cross-svg" src={crossSvg} alt="cross svg" />
+          </li>
+        ))}
       </ul>
+      <hr />
     </TodoMain>
   );
 };
