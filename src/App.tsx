@@ -26,7 +26,6 @@ const MainContainer = styled.div<{ darkMode: boolean }>`
   align-items: flex-start;
   justify-content: flex-start;
   background-image: url(${BgMobileLight});
-
   padding: 0 24px;
   background-repeat: no-repeat;
   background-size: 100% 200px;

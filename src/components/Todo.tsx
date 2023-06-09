@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { TodoRoot, Mode } from "../store/redux";
 import { makeTodo, toggleReceive } from "../store/TodoSlice";
 import crossSvg from "../assets/icon-cross.svg";
+import ControlPanel from "./ControlPanel";
 import React from "react";
 
 const Todo = (): JSX.Element => {
@@ -51,6 +52,8 @@ const Todo = (): JSX.Element => {
           </React.Fragment>
         ))}
       </ul>
+      <ControlPanel />
+      <p> Drag and drop to reorder list</p>
     </TodoMain>
   );
 };
@@ -110,7 +113,11 @@ const TodoMain = styled.div<{ darkMode: boolean }>`
     display: flex;
     flex-direction: column;
     background-color: ${(props) => (props.darkMode ? "#25273D" : "#FFFFFF")};
-    box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+    box-shadow: ${(props) =>
+      props.darkMode
+        ? "0px 35px 50px -15px rgba(0, 0, 0, 0.5)"
+        : "0px 35px 50px -15px rgba(194, 195, 214, 0.5)"};
+
     border-radius: 5px;
     padding: 16px 0 22px 0;
     gap: 16px;
@@ -161,6 +168,15 @@ const TodoMain = styled.div<{ darkMode: boolean }>`
       border: none;
       height: 1px;
     }
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: -0.1944444477558136px;
+    text-align: center;
+    color: #5b5e7e;
   }
 `;
 export default Todo;
