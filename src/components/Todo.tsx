@@ -17,7 +17,6 @@ const Todo = (): JSX.Element => {
     }
   };
 
-  console.log(takeText);
   return (
     <TodoMain>
       <form onSubmit={ClickOnSubmit}>

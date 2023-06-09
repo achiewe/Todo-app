@@ -1,27 +1,40 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-export interface TodoProps {
+interface Todo {
   wording: string;
   id: number;
   recieve: boolean;
 }
 
+export interface TodoProps {
+  myTodoArray: Todo[];
+}
+
 const initialState: TodoProps = {
-  wording: "heavy",
-  id: 5,
-  recieve: false,
+  myTodoArray: [],
 };
 
 const TodoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    makeTodo: (state, action) => {
-      state.wording = action.payload;
+    makeTodo: (state, action: PayloadAction<string>) => {
+      const newTodoItem = {
+        id: Date.now(),
+        wording: action.payload,
+        recieve: false,
+      };
+
+      state.myTodoArray.unshift(newTodoItem);
     },
 
-    toggleReceive: (state) => {
-      state.recieve = !state.recieve;
+    toggleReceive: (state, action: PayloadAction<number>) => {
+      const foundTodo = state.myTodoArray.find(
+        (todo) => todo.id === action.payload
+      );
+      if (foundTodo) {
+        foundTodo.recieve = !foundTodo.recieve;
+      }
     },
   },
 });
