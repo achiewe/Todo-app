@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import GlobalStyles from "./GlobalStyles";
-import BgMobileLight from "./assets/bg-mobile-light.jpg";
-// import BgMobileDark from "./assets/bg-mobile-dark.jpg";
+import bgLight from "./assets/bg-mobile-light.jpg";
+import bgDark from "./assets/bg-mobile-dark.jpg";
 import Header from "./components/Header";
 import Todo from "./components/Todo";
 import { useSelector } from "react-redux";
@@ -25,7 +25,7 @@ const MainContainer = styled.div<{ darkMode: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  background-image: url(${BgMobileLight});
+  background-image: url(${(props) => (props.darkMode ? bgDark : bgLight)});
   padding: 0 24px;
   background-repeat: no-repeat;
   background-size: 100% 200px;

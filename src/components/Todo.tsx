@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { TodoRoot, Mode } from "../store/redux";
-import { makeTodo, toggleReceive } from "../store/TodoSlice";
+import { deleteText, toggleReceive, clearCompleted } from "../store/TodoSlice";
 import crossSvg from "../assets/icon-cross.svg";
 import ControlPanel from "./ControlPanel";
 import CreateInputTodo from "./CreateInputTodo";
@@ -22,7 +22,7 @@ const Todo = (): JSX.Element => {
       <ul className="itemsUl">
         {todoItems.map((todo, index) => (
           <React.Fragment key={index}>
-            <li className="textLi">
+            <TextLi succed={todo.recieve} darkMode={darkMode}>
               <div className="circleText">
                 <button
                   onClick={() => {
@@ -32,11 +32,29 @@ const Todo = (): JSX.Element => {
                 ></button>
                 <h3>{todo.wording}</h3>
               </div>
-              <img className="cross-svg" src={crossSvg} alt="cross svg" />
-            </li>
+              <img
+                onClick={() => {
+                  dispatch(deleteText(todo.id));
+                }}
+                className="cross-svg"
+                src={crossSvg}
+                alt="cross svg"
+              />
+            </TextLi>
             <hr />
           </React.Fragment>
         ))}
+        <div className="itemsClear">
+          <h2> 5 items left</h2>
+          <button
+            onClick={() => {
+              dispatch(clearCompleted());
+            }}
+            className="clear"
+          >
+            Clear Completed{" "}
+          </button>
+        </div>
       </ul>
       {todoItems.length === 0 ? "" : <ControlPanel />}
     </TodoMain>
@@ -68,52 +86,81 @@ const TodoMain = styled.div<{
     padding: 16px 0 22px 0;
     gap: 16px;
 
-    .textLi {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      padding: 0 20px;
-      align-items: center;
-      justify-content: space-between;
-
-      .circleText {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-
-        .circle {
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          border: none;
-          border: ${(props) =>
-            props.darkMode ? "1px solid #393A4B" : "1px solid #e3e4f1"};
-          background: ${(props) => (props.darkMode ? "#25273D" : "#ffffff")};
-        }
-
-        h3 {
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 12px;
-          letter-spacing: -0.1666666716337204px;
-          text-align: left;
-          color: ${(props) => (props.darkMode ? "#C8CBE7" : "#494c6b")};
-        }
-      }
-
-      .cross-svg {
-        width: 11.79px;
-        height: 11.79px;
-      }
-    }
-
     hr {
       width: 100%;
       background-color: ${(props) => (props.darkMode ? "#393A4B" : "#e3e4f1")};
       border: none;
       height: 1px;
     }
+
+    .itemsClear {
+      width: 100%;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h2 {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 12px;
+        letter-spacing: -0.1666666716337204px;
+        text-align: left;
+        color: #9495a5;
+      }
+
+      .clear {
+        border: none;
+        background: none;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 12px;
+        letter-spacing: -0.1666666716337204px;
+        text-align: left;
+        color: #9495a5;
+      }
+    }
+  }
+`;
+
+const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: space-between;
+
+  .circleText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+
+    .circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: none;
+      border: ${(props) =>
+        props.darkMode ? "1px solid #393A4B" : "1px solid #e3e4f1"};
+      background: ${(props) => (props.darkMode ? "#25273D" : "#ffffff")};
+    }
+
+    h3 {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 12px;
+      letter-spacing: -0.1666666716337204px;
+      text-align: left;
+      color: ${(props) => (props.darkMode ? "#C8CBE7" : "#494c6b")};
+      text-decoration: ${(props) => (props.succed ? "line-through" : "")};
+    }
+  }
+
+  .cross-svg {
+    width: 11.79px;
+    height: 11.79px;
   }
 `;
 export default Todo;

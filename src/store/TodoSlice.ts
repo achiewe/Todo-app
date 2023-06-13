@@ -36,8 +36,21 @@ const TodoSlice = createSlice({
         foundTodo.recieve = !foundTodo.recieve;
       }
     },
+
+    deleteText: (state, action: PayloadAction<number>) => {
+      state.myTodoArray = state.myTodoArray.filter(
+        (mytodo) => mytodo.id !== action.payload
+      );
+    },
+
+    clearCompleted: (state) => {
+      state.myTodoArray = state.myTodoArray.filter(
+        (mytodo) => mytodo.recieve !== true
+      );
+    },
   },
 });
 
-export const { makeTodo, toggleReceive } = TodoSlice.actions;
+export const { makeTodo, toggleReceive, deleteText, clearCompleted } =
+  TodoSlice.actions;
 export default TodoSlice.reducer;
