@@ -5,15 +5,22 @@ import bgDark from "./assets/bg-mobile-dark.jpg";
 import Header from "./components/Header";
 import Todo from "./components/Todo";
 import { useSelector } from "react-redux";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Active from "./components/Active";
 import { Mode } from "./store/redux";
 function App() {
   const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
 
   return (
     <MainContainer darkMode={darkMode}>
-      <GlobalStyles />
-      <Header />
-      <Todo />
+      <Router>
+        <GlobalStyles />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Todo />} />
+          <Route path="/Active" element={<Active />} />
+        </Routes>
+      </Router>
     </MainContainer>
   );
 }

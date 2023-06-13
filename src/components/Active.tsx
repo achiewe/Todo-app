@@ -7,16 +7,14 @@ import ControlPanel from "./ControlPanel";
 import CreateInputTodo from "./CreateInputTodo";
 import React from "react";
 
-const Todo = (): JSX.Element => {
+const Active = (): JSX.Element => {
   const todoItems = useSelector(
     (redux: TodoRoot) => redux.createTodo.myTodoArray
   );
 
+  const Active = todoItems.filter((todo) => todo.recieve === false);
+
   const dispatch = useDispatch();
-
-  // const Active = todoItems.filter((todo) => todo.recieve === false);
-
-  // console.log(Active);
 
   const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
 
@@ -24,21 +22,21 @@ const Todo = (): JSX.Element => {
     <TodoMain darkMode={darkMode} todoItems={todoItems}>
       <CreateInputTodo />
       <ul className="itemsUl">
-        {todoItems.map((todo, index) => (
+        {Active.map((active, index) => (
           <React.Fragment key={index}>
-            <TextLi succed={todo.recieve} darkMode={darkMode}>
+            <TextLi succed={active.recieve} darkMode={darkMode}>
               <div className="circleText">
                 <button
                   onClick={() => {
-                    dispatch(toggleReceive(todo.id));
+                    dispatch(toggleReceive(active.id));
                   }}
                   className="circle"
                 ></button>
-                <h3>{todo.wording}</h3>
+                <h3>{active.wording}</h3>
               </div>
               <img
                 onClick={() => {
-                  dispatch(deleteText(todo.id));
+                  dispatch(deleteText(active.id));
                 }}
                 className="cross-svg"
                 src={crossSvg}
@@ -167,4 +165,5 @@ const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
     height: 11.79px;
   }
 `;
-export default Todo;
+
+export default Active;

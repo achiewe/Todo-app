@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { Mode } from "../store/redux";
+import { Link } from "react-router-dom";
 
 const ControlPanel = (): JSX.Element => {
   const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
 
   return (
     <MainControl darkMode={darkMode}>
-      <h2> All</h2>
-      <h2>Active</h2>
-      <h2>Completed</h2>
+      <Link to="/"> All</Link>
+      <Link to="/Active">Active</Link>
+      <Link to="/Completed">Completed</Link>
     </MainControl>
   );
 };
@@ -31,13 +32,14 @@ const MainControl = styled.div<{ darkMode: boolean }>`
       : "0px 35px 50px -15px rgba(194, 195, 214, 0.5)"};
   gap: 18px;
 
-  h2 {
+  a {
     font-size: 14px;
     font-weight: 700;
     line-height: 14px;
     letter-spacing: -0.1944444477558136px;
     text-align: left;
     color: ${(props) => (props.darkMode ? "#5B5E7E" : "#9495a5")};
+    text-decoration: none;
   }
 `;
 export default ControlPanel;
