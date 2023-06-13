@@ -4,6 +4,7 @@ import { Mode } from "../store/redux";
 
 const ControlPanel = (): JSX.Element => {
   const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
+
   return (
     <MainControl darkMode={darkMode}>
       <h2> All</h2>
