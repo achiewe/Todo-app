@@ -4,6 +4,7 @@ import { TodoRoot, Mode } from "../store/redux";
 import { deleteText, toggleReceive, clearCompleted } from "../store/TodoSlice";
 import crossSvg from "../assets/icon-cross.svg";
 import ControlPanel from "./ControlPanel";
+import iconcont from "../assets/icon-check.svg";
 import CreateInputTodo from "./CreateInputTodo";
 import React from "react";
 
@@ -17,16 +18,16 @@ const Todo = (): JSX.Element => {
   const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
 
   return (
-    <TodoMain
-      darkMode={darkMode}
-      todoItems={todoItems}
-      toggleReceive={toggleReceive}
-    >
+    <TodoMain darkMode={darkMode} todoItems={todoItems}>
       <CreateInputTodo />
       <ul className="itemsUl">
         {todoItems.map((todo, index) => (
           <React.Fragment key={index}>
-            <TextLi succed={todo.recieve} darkMode={darkMode}>
+            <TextLi
+              succed={todo.recieve}
+              darkMode={darkMode}
+              // toggleReceive={toggleReceive}
+            >
               <div className="circleText">
                 <button
                   onClick={() => {
@@ -68,7 +69,6 @@ const Todo = (): JSX.Element => {
 const TodoMain = styled.div<{
   darkMode: boolean;
   todoItems: { wording: string; id: number; recieve: boolean }[];
-  toggleReceive: { id: number };
 }>`
   width: 100%;
   display: flex;
@@ -128,7 +128,10 @@ const TodoMain = styled.div<{
   }
 `;
 
-const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
+const TextLi = styled.li<{
+  darkMode: boolean;
+  succed: boolean;
+}>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -146,14 +149,21 @@ const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
       width: 20px;
       height: 20px;
       border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: none;
       cursor: pointer;
       border: ${(props) =>
         props.darkMode ? "1px solid #393A4B" : "1px solid #e3e4f1"};
-      background: ${(props) => (props.darkMode ? "#25273D" : "#ffffff")};
-      :hover {
-        border: 1px solid;
-      }
+      background: none;
+      background-image: url(${(props) => (props.succed ? iconcont : iconcont)});
+      background-repeat: no-repeat;
+      background-position: top 0 left 0 right 0 bottom 0;
+      background: ${(props) =>
+        props.succed
+          ? "linear-gradient(135deg, #55DDFF 0%, #C058F3 100%)"
+          : ""};
     }
 
     h3 {
