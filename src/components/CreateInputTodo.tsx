@@ -53,6 +53,7 @@ const Form = styled.form<{ darkMode: boolean }>`
 
   input {
     width: 100%;
+    height: 20px;
     border: none;
     font-size: 12px;
     font-weight: 400;

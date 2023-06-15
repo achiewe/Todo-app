@@ -14,14 +14,14 @@ const Todo = (): JSX.Element => {
 
   const dispatch = useDispatch();
 
-  // const Active = todoItems.filter((todo) => todo.recieve === false);
-
-  // console.log(Active);
-
   const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
 
   return (
-    <TodoMain darkMode={darkMode} todoItems={todoItems}>
+    <TodoMain
+      darkMode={darkMode}
+      todoItems={todoItems}
+      toggleReceive={toggleReceive}
+    >
       <CreateInputTodo />
       <ul className="itemsUl">
         {todoItems.map((todo, index) => (
@@ -68,6 +68,7 @@ const Todo = (): JSX.Element => {
 const TodoMain = styled.div<{
   darkMode: boolean;
   todoItems: { wording: string; id: number; recieve: boolean }[];
+  toggleReceive: { id: number };
 }>`
   width: 100%;
   display: flex;
@@ -146,9 +147,13 @@ const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
       height: 20px;
       border-radius: 50%;
       border: none;
+      cursor: pointer;
       border: ${(props) =>
         props.darkMode ? "1px solid #393A4B" : "1px solid #e3e4f1"};
       background: ${(props) => (props.darkMode ? "#25273D" : "#ffffff")};
+      :hover {
+        border: 1px solid;
+      }
     }
 
     h3 {

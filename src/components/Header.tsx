@@ -35,6 +35,7 @@ const HeaderMain = styled.div`
   .IconSunMon {
     width: 20px;
     height: 20px;
+    cursor: pointer;
   }
 `;
 
