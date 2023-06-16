@@ -145,7 +145,10 @@ const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
       border: none;
       border: ${(props) =>
         props.darkMode ? "1px solid #393A4B" : "1px solid #e3e4f1"};
-      background: ${(props) => (props.darkMode ? "#25273D" : "#ffffff")};
+      background: ${(props) =>
+        props.succed
+          ? "linear-gradient(135deg, #55DDFF 0%, #C058F3 100%)"
+          : ""};
     }
 
     h3 {
