@@ -154,9 +154,6 @@ const TextLi = styled.li<{
       border: ${(props) =>
         props.darkMode ? "1px solid #393A4B" : "1px solid #e3e4f1"};
       background: none;
-      background-image: url(${(props) => (props.succed ? iconchek : iconchek)});
-      background-repeat: no-repeat;
-      background-position: top 0 left 0 right 0 bottom 0;
       background: ${(props) =>
         props.succed
           ? "linear-gradient(135deg, #55DDFF 0%, #C058F3 100%)"
@@ -164,7 +161,7 @@ const TextLi = styled.li<{
     }
 
     .check-icon {
-      display: flex;
+      display: ${(props) => (props.succed ? "flex" : "none")};
       position: absolute;
       top: 4px;
       left: 4px;

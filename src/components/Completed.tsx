@@ -147,6 +147,7 @@ const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
       border-radius: 50%;
       position: relative;
       border: none;
+      cursor: pointer;
       border: ${(props) =>
         props.darkMode ? "1px solid #393A4B" : "1px solid #e3e4f1"};
       background: ${(props) =>
