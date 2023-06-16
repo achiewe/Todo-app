@@ -5,6 +5,7 @@ import { deleteText, toggleReceive, clearCompleted } from "../store/TodoSlice";
 import crossSvg from "../assets/icon-cross.svg";
 import ControlPanel from "./ControlPanel";
 import CreateInputTodo from "./CreateInputTodo";
+import iconChek from "../assets/icon-check.svg";
 import React from "react";
 
 const Completed = (): JSX.Element => {
@@ -30,7 +31,9 @@ const Completed = (): JSX.Element => {
                     dispatch(toggleReceive(complete.id));
                   }}
                   className="circle"
-                ></button>
+                >
+                  <img className="icon-check" src={iconChek} alt="icon check" />
+                </button>
                 <h3>{complete.wording}</h3>
               </div>
               <img
@@ -142,6 +145,7 @@ const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
       width: 20px;
       height: 20px;
       border-radius: 50%;
+      position: relative;
       border: none;
       border: ${(props) =>
         props.darkMode ? "1px solid #393A4B" : "1px solid #e3e4f1"};
@@ -149,6 +153,14 @@ const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
         props.succed
           ? "linear-gradient(135deg, #55DDFF 0%, #C058F3 100%)"
           : ""};
+
+      .icon-check {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        right: 4px;
+        bottom: 4px;
+      }
     }
 
     h3 {
@@ -157,7 +169,7 @@ const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
       line-height: 12px;
       letter-spacing: -0.1666666716337204px;
       text-align: left;
-      color: ${(props) => (props.darkMode ? "#C8CBE7" : "#494c6b")};
+      color: ${(props) => (props.darkMode ? "#4D5067" : "#D1D2DA")};
       text-decoration: ${(props) => (props.succed ? "line-through" : "")};
     }
   }
