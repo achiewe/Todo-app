@@ -4,41 +4,38 @@ import { TodoRoot, Mode } from "../store/redux";
 import { deleteText, toggleReceive, clearCompleted } from "../store/TodoSlice";
 import crossSvg from "../assets/icon-cross.svg";
 import ControlPanel from "./ControlPanel";
-import iconchek from "../assets/icon-check.svg";
 import CreateInputTodo from "./CreateInputTodo";
 import React from "react";
 
-const Todo = (): JSX.Element => {
+const Completed = (): JSX.Element => {
   const todoItems = useSelector(
     (redux: TodoRoot) => redux.createTodo.myTodoArray
   );
 
+  const Completed = todoItems.filter((todo) => todo.recieve === true);
+
   const dispatch = useDispatch();
 
   const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
-
   return (
     <TodoMain darkMode={darkMode} todoItems={todoItems}>
       <CreateInputTodo />
       <ul className="itemsUl">
-        {todoItems.map((todo, index) => (
+        {Completed.map((complete, index) => (
           <React.Fragment key={index}>
-            <TextLi succed={todo.recieve} darkMode={darkMode}>
+            <TextLi succed={complete.recieve} darkMode={darkMode}>
               <div className="circleText">
                 <button
                   onClick={() => {
-                    dispatch(toggleReceive(todo.id));
+                    dispatch(toggleReceive(complete.id));
                   }}
                   className="circle"
-                >
-                  <img className="check-icon" src={iconchek} alt="check icon" />
-                </button>
-
-                <h3>{todo.wording}</h3>
+                ></button>
+                <h3>{complete.wording}</h3>
               </div>
               <img
                 onClick={() => {
-                  dispatch(deleteText(todo.id));
+                  dispatch(deleteText(complete.id));
                 }}
                 className="cross-svg"
                 src={crossSvg}
@@ -127,10 +124,7 @@ const TodoMain = styled.div<{
   }
 `;
 
-const TextLi = styled.li<{
-  darkMode: boolean;
-  succed: boolean;
-}>`
+const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -146,30 +140,12 @@ const TextLi = styled.li<{
 
     .circle {
       width: 20px;
-      position: relative;
       height: 20px;
       border-radius: 50%;
       border: none;
-      cursor: pointer;
       border: ${(props) =>
         props.darkMode ? "1px solid #393A4B" : "1px solid #e3e4f1"};
-      background: none;
-      background-image: url(${(props) => (props.succed ? iconchek : iconchek)});
-      background-repeat: no-repeat;
-      background-position: top 0 left 0 right 0 bottom 0;
-      background: ${(props) =>
-        props.succed
-          ? "linear-gradient(135deg, #55DDFF 0%, #C058F3 100%)"
-          : ""};
-    }
-
-    .check-icon {
-      display: flex;
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      right: 4px;
-      bottom: 4px;
+      background: ${(props) => (props.darkMode ? "#25273D" : "#ffffff")};
     }
 
     h3 {
@@ -188,4 +164,5 @@ const TextLi = styled.li<{
     height: 11.79px;
   }
 `;
-export default Todo;
+
+export default Completed;

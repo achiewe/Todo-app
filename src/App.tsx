@@ -7,6 +7,7 @@ import Todo from "./components/Todo";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Active from "./components/Active";
+import Completed from "./components/Completed";
 import { Mode } from "./store/redux";
 function App() {
   const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Todo />} />
           <Route path="/Active" element={<Active />} />
+          <Route path="/Completed" element={<Completed />} />
         </Routes>
       </Router>
     </MainContainer>
