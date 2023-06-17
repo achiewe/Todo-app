@@ -42,6 +42,13 @@ const Form = styled.form<{ darkMode: boolean }>`
       ? "0px 35px 50px -15px rgba(0, 0, 0, 0.5)"
       : "0px 35px 50px -15px #c2c3d680"};
 
+  @media (min-width: 1024px) {
+    width: 540px;
+    padding: 20px 0 20px 24px;
+    gap: 24px;
+    height: 64px;
+  }
+
   button {
     width: 20px;
     height: 20px;
@@ -49,6 +56,10 @@ const Form = styled.form<{ darkMode: boolean }>`
     border: ${(props) =>
       props.darkMode ? "1px solid #393A4B " : "1px solid #e3e4f1"};
     background: ${(props) => (props.darkMode ? "#25273D" : "#FFFFFF")};
+    @media (min-width: 1024px) {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   input {
@@ -63,6 +74,13 @@ const Form = styled.form<{ darkMode: boolean }>`
     color: ${(props) => (props.darkMode ? "#FFFFFF" : "black")};
     background-color: ${(props) => (props.darkMode ? "#25273D" : "#FFFFFF")};
     outline: none;
+    @media (min-width: 1024px) {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 18px;
+      letter-spacing: -0.25px;
+      text-align: left;
+    }
   }
 
   input::placeholder {
