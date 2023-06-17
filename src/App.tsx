@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import GlobalStyles from "./GlobalStyles";
-import bgLight from "./assets/bg-mobile-light.jpg";
-import bgDark from "./assets/bg-mobile-dark.jpg";
+import bgMLight from "./assets/bg-mobile-light.jpg";
+import bgMDark from "./assets/bg-mobile-dark.jpg";
+import bgDLight from "./assets/bg-desktop-light.jpg";
+import bgDDark from "./assets/bg-desktop-dark.jpg";
 import Header from "./components/Header";
 import Todo from "./components/Todo";
 import { useSelector } from "react-redux";
@@ -34,11 +36,16 @@ const MainContainer = styled.div<{ darkMode: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  background-image: url(${(props) => (props.darkMode ? bgDark : bgLight)});
+  background-image: url(${(props) => (props.darkMode ? bgMDark : bgMLight)});
   padding: 0 24px;
   background-repeat: no-repeat;
   background-size: 100% 200px;
   background-color: ${(props) => (props.darkMode ? "#171823" : "#FAFAFA")};
+  @media (min-width: 1024px) {
+    background-image: url(${(props) => (props.darkMode ? bgDDark : bgDLight)});
+    background-size: 100% 300px;
+    padding: 0;
+  }
 `;
 
 export default App;
