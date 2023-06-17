@@ -77,6 +77,9 @@ const TodoMain = styled.div<{
   gap: 16px;
   justify-content: center;
   align-items: center;
+  @media (min-width: 1024px) {
+    gap: 24px;
+  }
 
   .itemsUl {
     width: 327px;
@@ -91,6 +94,11 @@ const TodoMain = styled.div<{
     border-radius: 5px;
     padding: 16px 0 22px 0;
     gap: 16px;
+    @media (min-width: 1024px) {
+      width: 540px;
+      padding: 20px 0;
+      gap: 20px;
+    }
 
     hr {
       width: 100%;
@@ -105,6 +113,9 @@ const TodoMain = styled.div<{
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @media (min-width: 1024px) {
+        padding: 0 24px;
+      }
 
       h2 {
         font-size: 12px;
@@ -113,6 +124,13 @@ const TodoMain = styled.div<{
         letter-spacing: -0.1666666716337204px;
         text-align: left;
         color: #9495a5;
+        @media (min-width: 1024px) {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 14px;
+          letter-spacing: -0.1944444477558136px;
+          text-align: left;
+        }
       }
 
       .clear {
@@ -124,6 +142,13 @@ const TodoMain = styled.div<{
         letter-spacing: -0.1666666716337204px;
         text-align: left;
         color: #9495a5;
+        @media (min-width: 1024px) {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 14px;
+          letter-spacing: -0.1944444477558136px;
+          text-align: right;
+        }
       }
     }
   }
@@ -139,12 +164,18 @@ const TextLi = styled.li<{
   padding: 0 20px;
   align-items: center;
   justify-content: space-between;
+  @media (min-width: 1024px) {
+    padding: 0 24px;
+  }
 
   .circleText {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 12px;
+    @media (min-width: 1024px) {
+      gap: 24px;
+    }
 
     .circle {
       width: 20px;
@@ -160,6 +191,11 @@ const TextLi = styled.li<{
         props.succed
           ? "linear-gradient(135deg, #55DDFF 0%, #C058F3 100%)"
           : ""};
+
+      @media (min-width: 1024px) {
+        width: 24px;
+        height: 24px;
+      }
     }
 
     .check-icon {
@@ -169,6 +205,12 @@ const TextLi = styled.li<{
       left: 4px;
       right: 4px;
       bottom: 4px;
+      @media (min-width: 1024px) {
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 2px;
+      }
     }
 
     h3 {
@@ -179,12 +221,23 @@ const TextLi = styled.li<{
       text-align: left;
       color: ${(props) => (props.darkMode ? "#C8CBE7" : "#494c6b")};
       text-decoration: ${(props) => (props.succed ? "line-through" : "")};
+      @media (min-width: 1024px) {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: -0.25px;
+        text-align: left;
+      }
     }
   }
 
   .cross-svg {
     width: 11.79px;
     height: 11.79px;
+    @media (min-width: 1024px) {
+      width: 17.68px;
+      height: 17.68px;
+    }
   }
 `;
 export default Todo;
