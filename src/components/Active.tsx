@@ -13,7 +13,7 @@ const Active = (): JSX.Element => {
   );
 
   const Active = todoItems.filter((todo) => todo.recieve === false);
-
+  const ItemsLeft = Active.length;
   const dispatch = useDispatch();
 
   const darkMode = useSelector((redux: Mode) => redux.Mode.gloomy);
@@ -47,7 +47,7 @@ const Active = (): JSX.Element => {
           </React.Fragment>
         ))}
         <div className="itemsClear">
-          <h2> 5 items left</h2>
+          <h2> {ItemsLeft} items left</h2>
           <button
             onClick={() => {
               dispatch(clearCompleted());
