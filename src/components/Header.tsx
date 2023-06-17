@@ -12,9 +12,17 @@ const Header = (): JSX.Element => {
   const clickOnMode = (): void => {
     dispatch(dark(!darkMode));
   };
+  const handleClick = () => {
+    window.location.reload();
+  };
   return (
     <HeaderMain>
-      <img className="TodoSvg" src={TodoSvg} alt="todo svg" />
+      <img
+        onClick={handleClick}
+        className="TodoSvg"
+        src={TodoSvg}
+        alt="todo svg"
+      />
       <img
         className="IconSunMon"
         onClick={clickOnMode}
@@ -41,6 +49,7 @@ const HeaderMain = styled.div`
     @media (min-width: 1024px) {
       width: 167px;
       height: 40px;
+      cursor: pointer;
     }
   }
 
