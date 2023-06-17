@@ -14,6 +14,7 @@ const Completed = (): JSX.Element => {
   );
 
   const Completed = todoItems.filter((todo) => todo.recieve === true);
+  const ItemsLeft = Completed.length;
 
   const dispatch = useDispatch();
 
@@ -49,7 +50,7 @@ const Completed = (): JSX.Element => {
           </React.Fragment>
         ))}
         <div className="itemsClear">
-          <h2> 5 items left</h2>
+          <h2> {ItemsLeft} items left</h2>
           <button
             onClick={() => {
               dispatch(clearCompleted());
