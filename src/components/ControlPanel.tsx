@@ -16,7 +16,6 @@ const ControlPanel = (): JSX.Element => {
 };
 
 const MainControl = styled.div<{ darkMode: boolean }>`
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,6 +30,9 @@ const MainControl = styled.div<{ darkMode: boolean }>`
       ? "0px 35px 50px -15px rgba(0, 0, 0, 0.5)"
       : "0px 35px 50px -15px rgba(194, 195, 214, 0.5)"};
   gap: 18px;
+  @media (min-width: 1024px) {
+    width: 540px;
+  }
 
   a {
     font-size: 14px;
@@ -40,6 +42,7 @@ const MainControl = styled.div<{ darkMode: boolean }>`
     text-align: left;
     color: ${(props) => (props.darkMode ? "#5B5E7E" : "#9495a5")};
     text-decoration: none;
+    cursor: pointer;
   }
 `;
 export default ControlPanel;
