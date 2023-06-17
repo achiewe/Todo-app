@@ -32,10 +32,26 @@ const HeaderMain = styled.div`
   margin-top: 48px;
   margin-bottom: 40px;
 
+  @media (min-width: 1024px) {
+    margin-top: 70px;
+    max-width: 541px;
+  }
+
+  .TodoSvg {
+    @media (min-width: 1024px) {
+      width: 167px;
+      height: 40px;
+    }
+  }
+
   .IconSunMon {
     width: 20px;
     height: 20px;
     cursor: pointer;
+    @media (min-width: 1024px) {
+      width: 26px;
+      height: 26px;
+    }
   }
 `;
 

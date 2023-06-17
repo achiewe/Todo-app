@@ -45,6 +45,7 @@ const MainContainer = styled.div<{ darkMode: boolean }>`
     background-image: url(${(props) => (props.darkMode ? bgDDark : bgDLight)});
     background-size: 100% 300px;
     padding: 0;
+    align-items: center;
   }
 `;
 
