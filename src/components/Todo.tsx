@@ -150,6 +150,11 @@ const TodoMain = styled.div<{
           text-align: right;
         }
       }
+
+      .clear:hover {
+        color: ${(props) => (props.darkMode ? "#E3E4F1" : "#494C6B")};
+        cursor: pointer;
+      }
     }
   }
 `;
