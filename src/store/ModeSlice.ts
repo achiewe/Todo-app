@@ -12,7 +12,7 @@ const ThemeSlice = createSlice({
   name: "mode",
   initialState,
   reducers: {
-    dark: (state) => {
+    dark: (state): void => {
       state.gloomy = !state.gloomy;
     },
   },
