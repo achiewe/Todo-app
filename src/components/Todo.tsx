@@ -198,6 +198,10 @@ const TextLi = styled.li<{
       }
     }
 
+    .circle:hover {
+      border: 1px solid #c058f3;
+    }
+
     .check-icon {
       display: ${(props) => (props.succed ? "flex" : "none")};
       position: absolute;

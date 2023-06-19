@@ -43,6 +43,13 @@ const MainControl = styled.div<{ darkMode: boolean }>`
     color: ${(props) => (props.darkMode ? "#5B5E7E" : "#9495a5")};
     text-decoration: none;
     cursor: pointer;
+    :hover {
+      color: ${(props) => (props.darkMode ? "#E3E4F1" : "#494C6B")};
+    }
+
+    :focus {
+      color: #3a7cfd;
+    }
   }
 `;
 export default ControlPanel;
