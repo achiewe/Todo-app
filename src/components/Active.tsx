@@ -187,6 +187,7 @@ const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
       font-size: 12px;
       font-weight: 400;
       line-height: 12px;
+      cursor: pointer;
       letter-spacing: -0.1666666716337204px;
       text-align: left;
       color: ${(props) => (props.darkMode ? "#C8CBE7" : "#494c6b")};

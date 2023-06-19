@@ -215,6 +215,7 @@ const TextLi = styled.li<{ darkMode: boolean; succed: boolean }>`
       line-height: 12px;
       letter-spacing: -0.1666666716337204px;
       text-align: left;
+      cursor: pointer;
       color: ${(props) => (props.darkMode ? "#4D5067" : "#D1D2DA")};
       text-decoration: ${(props) => (props.succed ? "line-through" : "")};
       @media (min-width: 1024px) {
