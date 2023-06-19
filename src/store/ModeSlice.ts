@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface modeProps {
   gloomy: boolean;
@@ -12,7 +12,7 @@ const ThemeSlice = createSlice({
   name: "mode",
   initialState,
   reducers: {
-    dark: (state, action: PayloadAction<boolean>) => {
+    dark: (state) => {
       state.gloomy = !state.gloomy;
     },
   },
